@@ -10,3 +10,20 @@ class Empregado
     salario_base
   end
 end
+
+class Gerente < Empregado
+  attr_accessor :bonus
+
+  def initialize(nome, salario_base, bonus)
+    super(nome, salario_base)
+    @bonus = bonus
+  end
+
+  def calcular_salario
+    salario_base + bonus
+  end
+end
+
+# Criando objetos
+empregado = Empregado.new("João", 2.000)
+gerente = Gerente.new("Maria", 5.000, 1.000)

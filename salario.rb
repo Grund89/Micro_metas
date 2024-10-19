@@ -27,3 +27,7 @@ end
 # Criando objetos
 empregado = Empregado.new("João", 2.000)
 gerente = Gerente.new("Maria", 5.000, 1.000)
+
+# Calculando e imprimindo os salários
+puts "Salário de #{empregado.nome}: #{empregado.calcular_salario}"
+puts "Salário de #{gerente.nome}: #{gerente.calcular_salario}"

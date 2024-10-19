@@ -23,12 +23,12 @@ class Estudante < Pessoa
     super # Chama o método apresentar da classe pai
     puts "Sou estudante do curso de #{curso}."
   end
-
-  # Criando objetos
-  pessoa1 = Pessoa.new("João", 30)
-  estudante1 = Estudante.new("Maria", 20, "Engenharia")
-
-  # Chamando o método apresentar
-  pessoa.apresentar
-  estudante.apresentar
 end
+
+# Criando objetos
+pessoa = Pessoa.new("João", 30)
+estudante = Estudante.new("Maria", 20, "Engenharia")
+
+# Chamando o método apresentar
+pessoa.apresentar
+estudante.apresentar

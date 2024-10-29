@@ -6,3 +6,10 @@ class Veiculo
     @modelo = modelo
     @ano = ano
   end
+
+
+  def idade
+    ano_atual = Time.now.year
+    ano_atual - @ano
+  end
+end

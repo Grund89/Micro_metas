@@ -43,3 +43,21 @@ class Gerente < Funcionario
     end
   end
 end
+
+# Criar funcionários
+funcionario1 = Funcionario.new("João", 3000)
+funcionario2 = Funcionario.new("Maria", 3500)
+
+# Criar gerente
+gerente = Gerente.new("Carlos", 7000)
+
+# Adicionar funcionários à equipe do gerente
+gerente.adicionar_a_equipe(funcionario1)
+gerente.adicionar_a_equipe(funcionario2)
+
+# Exibir informações da equipe
+gerente.exibir_informacoes
+gerente.exibir_equipe
+
+# Ajustar salário da equipe em 10%
+gerente.ajustar_salario_da_equipe(10)

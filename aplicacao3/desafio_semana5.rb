@@ -1,7 +1,8 @@
-# Herança em OOP: criar uma classe que herda de outra.
-# Aprender o conceito de herança em OOP, criando uma classe filha
-# que herda atributos e métodos da classe pai.
-# Exemplo: Estudante herdando de Pessoa.
+# Criar uma aplicação que utilize herança e polimorfismo.
+# Desenvolver uma aplicação que utilize herança entre classes
+# e aplique polimorfismo para sobrescrever métodos, como um sistema
+# de gerenciamento de veículos (Carro, Caminhão).
+
 
 class Veiculo
   attr_accessor :marca, :modelo, :ano

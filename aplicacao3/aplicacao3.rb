@@ -1,8 +1,3 @@
-# Desenvolver um sistema que simule uma empresa, com classes
-# que herdam e compartilham funcionalidades.
-# Exemplo: um sistema de gerenciamento de funcionários, onde
-# Gerente e Funcionário têm comportamentos distintos.
-
 class Funcionario
   attr_accessor :nome, :salario
 
@@ -12,7 +7,7 @@ class Funcionario
   end
 
   def exibir_informacoes
-    puts "Nome: #{@nome}, Salário: #{@salario}"
+    puts "Nome: #{@nome}, Salário: #{format('%.2f', @salario)}"
   end
 end
 
@@ -20,8 +15,8 @@ class Gerente < Funcionario
   attr_accessor :equipe
 
   def initialize(nome, salario)
-    super(nome, salario)  # Chamamos o `initialize` da classe pai (Funcionario)
-    @equipe = []  # Inicializa a equipe do gerente
+    super(nome, salario)
+    @equipe = []
   end
 
   def adicionar_a_equipe(funcionario)
@@ -39,25 +34,22 @@ class Gerente < Funcionario
     @equipe.each do |funcionario|
       novo_salario = funcionario.salario * (1 + porcentagem / 100.0)
       funcionario.salario = novo_salario
-      puts "Novo salário de #{funcionario.nome}: #{funcionario.salario}"
+      puts "Novo salário de #{funcionario.nome}: #{format('%.2f', funcionario.salario)}"
     end
   end
 end
 
-# Criar funcionários
+# Teste do sistema
 funcionario1 = Funcionario.new("João", 3000)
 funcionario2 = Funcionario.new("Maria", 3500)
 
-# Criar gerente
 gerente = Gerente.new("Carlos", 7000)
 
-# Adicionar funcionários à equipe do gerente
 gerente.adicionar_a_equipe(funcionario1)
 gerente.adicionar_a_equipe(funcionario2)
 
-# Exibir informações da equipe
 gerente.exibir_informacoes
 gerente.exibir_equipe
 
-# Ajustar salário da equipe em 10%
+# Ajusta o salário da equipe em 10%
 gerente.ajustar_salario_da_equipe(10)

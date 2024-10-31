@@ -18,12 +18,36 @@ class Veiculo
     ano_atual = Time.now.year
     ano_atual - @ano
   end
+
+  def calcular_ipva(aliquota = 0.03)
+    # Utiliza Redis para cachear os resultados
+    redis = Redis.new
+
+    cache_key = "fipe:#{@marca}:#{@modelo}:#{@ano}"
+    valor_veiculo = redis.get(cache_key)
+
+    unless valor_veiculo
+      begin
+        fipeapi = Fipeapi.new
+        veiculo_fipe = fipeapi.find(@marca, @modelo, @ano)
+        valor_veiculo = veiculo_fipe['Valor']
+        redis.set(cache_key, valor_veiculo, ex: 3600) # Cache por 1 hora
+      rescue Fipeapi::Error => e
+        puts "Erro ao consultar a FIPE: #{e.message}"
+        return nil
+      end
+    end
+  end
 end
 
 class Carro < Veiculo
   attr_accessor :num_portas, :tipo_combustivel
 
-  def calcular_ipva(aliquota = 0.03)
-    redis = Redis.new
+end
+
+class Caminhao < Veiculo
+  attr_accessor :capacidade_carga, :num_eixos
+
+  def custo_por_km(valor_combustivel)
   end
 end

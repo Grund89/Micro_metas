@@ -15,3 +15,11 @@ class Veiculo
     puts "O veículo está se movendo."
   end
 end
+
+class Carro < Veiculo
+  attr_accessor :numero_de_portas
+
+  def initialize(marca, modelo, ano, capacidade_de_combustivel, numero_de_portas)
+    super(marca, modelo, ano, capacidade_de_combustivel)
+    @numero_de_portas = numero_de_portas
+  end

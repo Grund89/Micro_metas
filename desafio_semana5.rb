@@ -23,3 +23,8 @@ class Carro < Veiculo
     super(marca, modelo, ano, capacidade_de_combustivel)
     @numero_de_portas = numero_de_portas
   end
+
+  def mover
+    puts "O carro está percorrendo a estrada."
+  end
+end

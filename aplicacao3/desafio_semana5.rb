@@ -51,3 +51,24 @@ class Caminhao < Veiculo
   def custo_por_km(valor_combustivel)
   end
 end
+
+    ipva = valor_veiculo * aliquota
+    return ipva
+  end
+end
+
+# Pedindo informações ao usuário
+puts "Informe os dados do veículo:"
+  print "Marca: "
+  marca = gets.chomp
+  print "Modelo: "
+  modelo = gets.chomp
+  print "Ano: "
+  ano = gets.chomp.to_i
+
+  # Criando um objeto Carro ou Caminhão
+  # (Você pode implementar uma lógica para decidir qual classe instanciar)
+  meu_carro = Carro.new(marca, modelo, ano)
+
+  # Calculando e exibindo o IPVA
+  puts "O IPVA do seu carro é: R$ #{meu_carro.calcular_ipva.round(2)}"

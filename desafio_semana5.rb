@@ -28,3 +28,11 @@ class Carro < Veiculo
     puts "O carro está percorrendo a estrada."
   end
 end
+
+class Caminhao < Veiculo
+  attr_accessor :capacidade_de_carga
+
+  def initialize(marca, modelo, ano, capacidade_de_combustivel, capacidade_de_carga)
+    super(marca, modelo, ano, capacidade_de_combustivel)
+    @capacidade_de_carga = capacidade_de_carga
+  end

@@ -7,3 +7,11 @@ class Veiculo
     @ano = ano
     @capacidade_de_combustivel = capacidade_de_combustivel
   end
+  def abastecer(quantidade)
+    puts "Abastecendo #{quantidade} litros..."
+  end
+
+  def mover
+    puts "O veículo está se movendo."
+  end
+end

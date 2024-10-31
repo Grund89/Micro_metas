@@ -3,7 +3,8 @@
 # e aplique polimorfismo para sobrescrever métodos, como um sistema
 # de gerenciamento de veículos (Carro, Caminhão).
 
-
+require 'fipe_api'
+require 'redis'
 class Veiculo
   attr_accessor :marca, :modelo, :ano
 
@@ -13,9 +14,16 @@ class Veiculo
     @ano = ano
   end
 
-
   def idade
     ano_atual = Time.now.year
     ano_atual - @ano
+  end
+end
+
+class Carro < Veiculo
+  attr_accessor :num_portas, :tipo_combustivel
+
+  def calcular_ipva(aliquota = 0.03)
+    redis = Redis.new
   end
 end

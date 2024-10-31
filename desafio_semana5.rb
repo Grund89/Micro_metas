@@ -5,6 +5,7 @@
 
 require 'fipe_api'
 require 'redis'
+
 class Veiculo
   attr_accessor :marca, :modelo, :ano
 
@@ -30,45 +31,37 @@ class Veiculo
       begin
         fipeapi = Fipeapi.new
         veiculo_fipe = fipeapi.find(@marca, @modelo, @ano)
-        valor_veiculo = veiculo_fipe['Valor']
+        valor_veiculo = veiculo_fipe['Valor'].to_f
         redis.set(cache_key, valor_veiculo, ex: 3600) # Cache por 1 hora
       rescue Fipeapi::Error => e
         puts "Erro ao consultar a FIPE: #{e.message}"
         return nil
       end
     end
-  end
-end
-
-class Carro < Veiculo
-  attr_accessor :num_portas, :tipo_combustivel
-
-end
-
-class Caminhao < Veiculo
-  attr_accessor :capacidade_carga, :num_eixos
-
-  def custo_por_km(valor_combustivel)
-  end
-end
 
     ipva = valor_veiculo * aliquota
     return ipva
   end
 end
 
+class Carro < Veiculo
+  attr_accessor :num_portas, :tipo_combustivel
+end
+
+
+
 # Pedindo informações ao usuário
 puts "Informe os dados do veículo:"
-  print "Marca: "
-  marca = gets.chomp
-  print "Modelo: "
-  modelo = gets.chomp
-  print "Ano: "
-  ano = gets.chomp.to_i
+print "Marca: "
+marca = gets.chomp
+print "Modelo: "
+modelo = gets.chomp
+print "Ano: "
+ano = gets.chomp.to_i
 
-  # Criando um objeto Carro ou Caminhão
-  # (Você pode implementar uma lógica para decidir qual classe instanciar)
-  meu_carro = Carro.new(marca, modelo, ano)
+# Criando um objeto Carro ou Caminhão
+meu_carro = Carro.new(marca, modelo, ano)
 
-  # Calculando e exibindo o IPVA
-  puts "O IPVA do seu carro é: R$ #{meu_carro.calcular_ipva.round(2)}"
+# Calculando e exibindo o IPVA
+ipva = meu_carro.calcular_ipva
+puts "O IPVA do seu carro é: R$ #{ipva.round(2)}" if ipva

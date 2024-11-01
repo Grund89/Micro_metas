@@ -36,3 +36,8 @@ class Caminhao < Veiculo
     super(marca, modelo, ano, capacidade_de_combustivel)
     @capacidade_de_carga = capacidade_de_carga
   end
+
+  def mover
+    puts "O caminhão está transportando carga."
+  end
+end

@@ -41,3 +41,10 @@ class Caminhao < Veiculo
     puts "O caminhão está transportando carga."
   end
 end
+
+# Exemplo de uso:
+carro = Carro.new("Toyota", "Corolla", 2020, 50, 4)
+caminhao = Caminhao.new("Volvo", "FH", 2018, 300, 20_000)
+
+carro.mover
+caminhao.mover

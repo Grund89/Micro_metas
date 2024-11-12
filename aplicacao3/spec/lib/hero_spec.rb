@@ -1,5 +1,9 @@
 require 'spec_helper'
 require 'hero'
 
-decribe Hero do
-  it 'ha
+describe Hero do
+  it 'has a sword' do
+    hero = Hero.new
+    expect(hero.weapon).to eq('sword')
+  end
+end
